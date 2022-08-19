@@ -4,7 +4,7 @@ def intersect(home_path):
     annotations = os.listdir(home_path+"/Annotations")
 
     for i,annotation in enumerate(annotations):
-        annotations[i] = annotations[:-4]
+        annotations[i] = annotations[i][:-4]
     txtann = []
     with open (home_path+"/ImageSets/Main/trainval.txt",'r') as f:
         txtann = f.read().split('\n')[:-1]
@@ -15,7 +15,10 @@ def intersect(home_path):
     for ann in newann:
         text += ann
         text += '\n'
+
+    print(text)
     with open (home_path+"/ImageSets/Main/trainval.txt",'w') as f:
+        print(text)
         f.write(text)
 
     #`print(annotations.intersection(ann))
